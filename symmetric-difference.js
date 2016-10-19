@@ -1,8 +1,9 @@
 /*
-**  Author:         Alex Cholakis
-**  GitHub/Twitter: Alex Coder / jkid314159
-**  File Name:      symmetric-difference
-**  Date:           October, 2016
+**  Author:     Alex Cholakis
+**  GitHub:     jkid314159
+**  Twitter:    jkid314159
+**  File Name:  symmetric-difference
+**  Date:       October, 2016
 **
 **  
 **  Exercise completed for Free Code Camp - Advance Algorithm section.
