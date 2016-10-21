@@ -1,9 +1,10 @@
 /*
 **  Author:     Alex Cholakis (@jkid314159)
-**  File Name:  exact-change
+**  File Name:  inventory-update
 **  Date:       October, 2016
 **
-
+**  Exercise completed for Free Code Camp.
+**
 **  Compare and update the inventory stored in a 2D array 
 **  against a second 2D array of a fresh delivery. Update 
 **  the current existing inventory item quantities (in array1). 
@@ -14,46 +15,42 @@
 
 "use strict";
 function updateInventory( array1, array2 ) {
-	//Declare variables.
-
 	//Sort array alphabetically on value
 	function sorter( arrayIn ) {
 	    arrayIn.sort( function (a, b) {
-		if( a[1] > b[1] ) {
-			return 1;
-		}
-		if( a[1] < b[1] ) {
-			return -1;
-		}
-		//a equal to b
-		return 0;
-
+			if( a[1] > b[1] ) {
+				return 1;
+			}
+			if( a[1] < b[1] ) {
+				return -1;
+			}
+			//a equal to b
+			return 0;
 	    } );//sort()-end
-	    
 	    return arrayIn;
-	
 	}//sorter()-end
 	
 	array1 = sorter( array1 );
 	array2 = sorter( array2 );
 		
-		
 	for( var i = 0; i < array1.length; i++ ) {
-		for ( var j = 0; j < array2.length; j++ ){
-			console.log(array1[i][1]);
-			console.log(array2[j][1]);
+		for ( var j = 0; j < array2.length; j++ ){		
 			if ( array1[i][1] === array2[j][1] ){
-				console.log("true");
-				array1[i][0] = array2[j][0];
-				array2.pop();
-			} else {
-				array1.push( array2[j] );
+			//Element matches then make assignment
+				array1[i][0] = array1[i][0] + array2[j][0];
+				//Delete element from array2.
+				var element = array2[j];	
+				var indx = array2.indexOf( element );
+				array2.splice(indx,1);
 			}
 		}//for_inner-end
-		console.log( array1 );
-		console.log("* * * * *");
 	}//for_outer-end
 	
+	//Push remaining elements of array2 into array1.
+	for( var k = 0; k < array2.length; k++ ) {
+		array1.push( array2[k] );
+	} 
+	array1 = sorter( array1 );
 	return array1;
 
 }//updateInventory()-end
